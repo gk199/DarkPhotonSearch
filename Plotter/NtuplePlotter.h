@@ -690,7 +690,11 @@ public :
 
 				TH1F* h = (TH1F*)GetHist1D( myPlotParams, filetag_treename, cut_compare);
 
-				string hist_tag = Form( "%s "+GetBetterCutTitle( selective_cuts[filetag_treename] )+" "+GetBetterCutTitle( cut_compare ), filetag_treename.c_str() );
+				std::stringstream ss(filetag_treename.c_str());  // Create a stringstream filetag | tree since I only want to use filetag in the legend 
+				std::string filename;
+				ss >> filename; // Extract the first word from the stringstream
+				// string hist_tag = Form( "%s "+GetBetterCutTitle( selective_cuts[filetag_treename] )+" "+GetBetterCutTitle( cut_compare ), filetag_treename.c_str() );
+				string hist_tag = Form( "%s "+GetBetterCutTitle( selective_cuts[filetag_treename] )+" "+GetBetterCutTitle( cut_compare ), filename.c_str() );
 				hist_tags.push_back( hist_tag );
 				hists[hist_tag] = h;
 				i++;
