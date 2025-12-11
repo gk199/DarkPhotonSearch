@@ -26,7 +26,7 @@ void NtuplePlotterExample(){
 	plotter_example1.SetOutputFileTag("Aprime_JPsi"); // Your own special name :)
 	plotter_example1.debug  		  = false; 	// Default = false
 	plotter_example1.plot_norm 		  = true; 	// Default = true
-	plotter_example1.plot_log  		  = false; 	// Default = true
+	plotter_example1.plot_log  		  = true; 	// Default = true
 	plotter_example1.plot_log_ratio   = false; 	// Default = false. Make bottom panel log scale
 	plotter_example1.plot_log_x       = false; 	// Default = false. Plot log on the x axis
 	plotter_example1.stamp_counts 	  = true;	// Default = false. Print event count and integral in legend
@@ -53,15 +53,29 @@ void NtuplePlotterExample(){
 	plotter_example2.SetPlots({ P_dimuon_mass_0 }); 
 	plotter_example2.AddPlot( P_truth_dimuon_mass_0 );
 	plotter_example2.SetTreeName( "Events" );			 					// Multiple Tree Names -- number must match number of input files (1:1), {"Events", "Events"}
-	plotter_example2.SetCuts("n_hits > 0"); 		                        // Apply cuts to all events
-	plotter_example2.SetComparisonCuts({Cut_n_TruthDiMuon, Cut_fpga_trig}); // Apply cuts to overlay
+	plotter_example2.plot_norm = false; 
+	// plotter_example2.SetCuts("n_hits > 0"); 		                        // Apply cuts to all events
 	// plotter_example2.SetSelectiveCuts("JPsi", "n_hits>1");			    // Apply this only to filetag names that include the string "JPsi"
-	plotter_example2.SetOutputFileTag("TruthCompare"); 						// Your own special name :)
+	// plotter_example2.SetComparisonCuts({Cut_n_TruthDiMuon, Cut_fpga_trig}); // Apply cuts to overlay
+	plotter_example2.SetComparisonCuts({Cut_dimuon_pos, Cut_nTracks, Cut_dimuon_pT_p, Cut_dimuon_pT_n});
+	plotter_example2.SetOutputFileTag(""); 									// Your own special name :)
 	plotter_example2.SetLegendPosition( 0.6, 0.7, 0.88, 0.88 );				// Manual Legend location
-	plotter_example2.colors = {kBlack, kBlack, kRed, kRed, kGreen+2, kGreen+2};		        // Your own colors (default kBlack + rainbow)
-	plotter_example2.linestyle = {kDotted, kDashed, kDotted, kDashed, kDotted, kDashed}; 		// Your own linestyle (default kSolid)
-	plotter_example2.NBins = 15; 									 		// Default = 100
-	plotter_example2.Plot();								 	
+	plotter_example2.colors = {kBlack, kBlack, kBlack, kGray, kRed, kRed, kRed, kRed-4, kGreen+2, kGreen+2, kGreen+2, kGreen+3};		        // Your own colors (default kBlack + rainbow)
+	plotter_example2.linestyle = {kSolid, kDotted, kDashed, kDashed, kSolid, kDotted, kDashed, kDashed, kSolid, kDotted, kDashed, kDashed}; 		// Your own linestyle (default kSolid)
+	// plotter_example2.NBins = 15; 									 		// Default = 100
+	plotter_example2.Plot();	
+	
+	class NtuplePlotter plotter_example7( filetags_all, path );
+
+	plotter_example7.SetPlots({ P_dimuon_mass_0 }); 
+	plotter_example7.SetTreeName( "Events" );			 					// Multiple Tree Names -- number must match number of input files (1:1), {"Events", "Events"}
+	plotter_example7.plot_norm = false; 
+	plotter_example7.SetComparisonCuts({Cut_dimuon_nmom10, Cut_dimuon_nmom30, Cut_dimuon_nmom50, Cut_dimuon_nmom70});
+	plotter_example7.SetOutputFileTag("EnergyCuts"); 									// Your own special name :)
+	plotter_example7.SetLegendPosition( 0.6, 0.7, 0.88, 0.88 );				// Manual Legend location
+	plotter_example7.colors = {kBlack, kBlack, kBlack, kGray, kRed, kRed, kRed, kRed-4, kGreen+2, kGreen+2, kGreen+2, kGreen+3};		        // Your own colors (default kBlack + rainbow)
+	plotter_example7.linestyle = {kSolid, kDotted, kDashed, kDashed, kSolid, kDotted, kDashed, kDashed, kSolid, kDotted, kDashed, kDashed}; 		// Your own linestyle (default kSolid)
+	plotter_example7.Plot();	
 
 	// ----- Example 3 -----//
 	// - Ratio plotting -- can be used for efficiency plots too
