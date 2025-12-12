@@ -63,7 +63,20 @@ void NtuplePlotterExample(){
 	plotter_example2.colors = {kBlack, kBlack, kBlack, kGray, kRed, kRed, kRed, kRed-4, kGreen+2, kGreen+2, kGreen+2, kGreen+3};		        // Your own colors (default kBlack + rainbow)
 	plotter_example2.linestyle = {kSolid, kDotted, kDashed, kDashed, kSolid, kDotted, kDashed, kDashed, kSolid, kDotted, kDashed, kDashed}; 		// Your own linestyle (default kSolid)
 	// plotter_example2.NBins = 15; 									 		// Default = 100
-	plotter_example2.Plot();	
+	plotter_example2.Plot();
+	
+	class NtuplePlotter plotter_example8( filetags_all, path );
+
+	plotter_example8.SetPlots({ P_dimuon_mass_0 }); 
+	plotter_example8.AddPlot( P_truth_dimuon_mass_0 );
+	plotter_example8.SetTreeName( "Events" );			 					// Multiple Tree Names -- number must match number of input files (1:1), {"Events", "Events"}
+	plotter_example8.plot_norm = false; 
+	plotter_example8.SetComparisonCuts({"", Cut_mom, Cut_DT, Cut_chisq, Cut_hodo});
+	plotter_example8.SetOutputFileTag("CutBased"); 									// Your own special name :)
+	plotter_example8.SetLegendPosition( 0.5, 0.4, 0.88, 0.88 );				// Manual Legend location
+	plotter_example8.colors = {kBlack, kGray, kBlack, kBlack, kGray, kRed, kRed-4, kRed, kRed, kRed-4, kGreen+2, kGreen+3, kGreen+2, kGreen+2, kGreen+3};		        // Your own colors (default kBlack + rainbow)
+	plotter_example8.linestyle = {kSolid, kSolid, kDotted, kDashed, kDashed, kSolid, kSolid, kDotted, kDashed, kDashed, kSolid, kSolid, kDotted, kDashed, kDashed}; 		// Your own linestyle (default kSolid)
+	plotter_example8.Plot();
 	
 	class NtuplePlotter plotter_example7( filetags_all, path );
 
@@ -86,7 +99,13 @@ void NtuplePlotterExample(){
 	
 	class NtuplePlotter plotter_example3( filetags_all, path );
 
-	plotter_example3.SetPlots({ P_mass_res, P_hits_h1x, P_hits_h2x, P_hits_h3x, P_hits_h4x, P_hits_d0x, P_hits_d2x, P_hits_d3px, P_hits_d3mx, P_hits_dp1, P_hits_dp2, P_track_nhits, P_track_nhits_1, P_n_tracks, P_track_charge, P_track_quality, P_dimuon_nmom_z_0, P_dimuon_pmom_z_0, P_dimuon_ppos_z_0, P_dimuon_npos_z_0 }); 
+	plotter_example3.SetPlots({ P_mass_res, P_hits_h1x, P_hits_h2x, P_hits_h3x, P_hits_h4x, 
+								P_hits_d0x, P_hits_d2x, P_hits_d3px, P_hits_d3mx, P_hits_d3x_tot,
+								P_hits_dp1, P_hits_dp2, 
+								P_track_nhits, P_track_nhits_1, P_n_tracks, P_track_charge, P_track_quality, P_track_chisq,
+								P_dimuon_nmom_z_0, P_dimuon_pmom_z_0, P_dimuon_ppos_z_0, P_dimuon_npos_z_0,
+								P_dimuon_chisq, P_dimuon_chisq_vx, P_dimuon_x_vtx, P_dimuon_y_vtx, P_dimuon_z_vtx,
+								P_hits_d0, P_hits_d1, P_hits_d2, P_hits_d3p, P_hits_d3m }); 
 	plotter_example3.SetTreeName( "Events" ); 
 	// plotter_example3.SetOutputFileTag("Resolution");
 	plotter_example3.SetLegendPosition( 0.6, 0.7, 0.88, 0.88 );
