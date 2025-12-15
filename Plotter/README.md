@@ -13,3 +13,9 @@ The various plotting functions are defined in `NtuplePlotter.h`, which calls `Pl
 Change the path of the input files (currently `string path = "../../DarkQuest/e1039-analysis/SimHits/macro/output_";` in `NtuplePlotterExample`). The naming convention is `output_*.root` where `*` is listed in the `filetags` list. 
 
 Plotter adapted from Kiley Kennedy's [plotter](https://github.com/gk199/Run3-HCAL-LLP-Analysis/tree/main/MiniTuplePlotter). 
+
+## Cutflow Tables
+```
+source /storage/utils/setup-e1039.sh 
+python3 DarkPhoton_Cutflow.py <filepath to .root file>
+```

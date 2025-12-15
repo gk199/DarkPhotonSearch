@@ -43,10 +43,10 @@ PlotParams P_dimuon_x_vtx               = {"dimuon_x_vtx[0]", "Dimuon vertex x",
 PlotParams P_dimuon_y_vtx               = {"dimuon_y_vtx[0]", "Dimuon vertex y", "y [mm]", -30, 30 };
 PlotParams P_dimuon_z_vtx               = {"dimuon_z_vtx[0]", "Dimuon vertex z", "z [mm]", -400, 700 };
 // momentum and position of muons
-PlotParams P_dimuon_nmom_z_0            = {"dimuon_nmom_z[0]", "Muon+ momentum (z) for leading dimuons", "p [GeV]", 0, 100 };
-PlotParams P_dimuon_pmom_z_0            = {"dimuon_pmom_z[0]", "Muon- momentum (z) for leading dimuons", "p [GeV]", 0, 100 };
-PlotParams P_dimuon_npos_z_0            = {"dimuon_npos_z[0]", "Muon+ position (z) for leading dimuons", "z [mm]", -300, 550 };
-PlotParams P_dimuon_ppos_z_0         	= {"dimuon_ppos_z[0]", "Muon- position (z) for leading dimuons", "z [mm]", -300, 550 };
+PlotParams P_dimuon_nmom_z_0            = {"dimuon_nmom_z[0]", "Muon- momentum (z) for leading dimuons", "p [GeV]", 0, 100 };
+PlotParams P_dimuon_pmom_z_0            = {"dimuon_pmom_z[0]", "Muon+ momentum (z) for leading dimuons", "p [GeV]", 0, 100 };
+PlotParams P_dimuon_npos_z_0            = {"dimuon_npos_z[0]", "Muon- position (z) for leading dimuons", "z [mm]", -300, 550 };
+PlotParams P_dimuon_ppos_z_0         	= {"dimuon_ppos_z[0]", "Muon+ position (z) for leading dimuons", "z [mm]", -300, 550 };
 
 PlotParams P_track_nhits_st1            = {"track_nhits_st1[0]", "Number of hits for leading track in station 1", "Number of Hits", 0, 50 };
 PlotParams P_track_pz_vtx               = {"track_pz_vtx[0]", "Track pZ", "Track pZ [GeV]", 0, 100 };
@@ -58,21 +58,24 @@ PlotParams P_hits_h1x                   = {"n_hits_h1x", "Number of hits in H1X 
 PlotParams P_hits_h2x                   = {"n_hits_h2x", "Number of	 hits in H2X hodoscope", "Number of Hits", 0, 20 };
 PlotParams P_hits_h3x                   = {"n_hits_h3x", "Number of	 hits in H3X hodoscope", "Number of Hits", 0, 20 };
 PlotParams P_hits_h4x                   = {"n_hits_h4x", "Number of	 hits in H4X hodoscope", "Number of Hits", 0, 20 };
+PlotParams P_hits_hodoscope_total       = {"n_hits_h1x + n_hits_h2x + n_hits_h3x + n_hits_h4x", "Number of total hits in hodoscopes", "Number of Hits", 0, 60 };
 // drift chamber hits
 PlotParams P_hits_d0x                   = {"n_hits_d0x", "Number of hits in D0X drift chamber", "Number of Hits", 0, 20 };
 PlotParams P_hits_d2x                   = {"n_hits_d2x", "Number of hits in	 D2X drift chamber", "Number of Hits", 0, 20 };		
 PlotParams P_hits_d3px                  = {"n_hits_d3px", "Number of hits in D3+X drift chamber", "Number of Hits", 0, 10 };
 PlotParams P_hits_d3mx                  = {"n_hits_d3mx", "Number of hits in D3-X drift chamber", "Number of Hits", 0, 10 };
 PlotParams P_hits_d3x_tot               = {"n_hits_d3mx + n_hits_d3px", "Number of hits in D3-X + D3_X drift chamber", "Number of Hits", 0, 10 };
+PlotParams P_hits_drift_tot             = {"n_hits_d0x + n_hits_d2x + n_hits_d3mx + n_hits_d3px", "Number of hits in all drift chambers", "Number of Hits", 0, 30 };
 // drift chamber ? hits (total)
-PlotParams P_hits_d0                    = {"n_hits_d0", "Number of hits in D0 drift chamber", "Number of Hits", 0, 30 };
-PlotParams P_hits_d1                    = {"n_hits_d1", "Number of hits in D1 drift chamber", "Number of Hits", 0, 30 };
-PlotParams P_hits_d2                    = {"n_hits_d2", "Number of hits in D2 drift chamber", "Number of Hits", 0, 30 };
-PlotParams P_hits_d3p                   = {"n_hits_d3p", "Number of hits in D3+ drift chamber", "Number of Hits", 0, 30 };
-PlotParams P_hits_d3m                   = {"n_hits_d3m", "Number of hits in D3- drift chamber", "Number of Hits", 0, 30 };
+PlotParams P_hits_d0                    = {"n_hits_d0", "Number of hits in D0 drift chamber", "Number of Hits", 0, 60 };
+PlotParams P_hits_d1                    = {"n_hits_d1", "Number of hits in D1 drift chamber", "Number of Hits", 0, 60 };
+PlotParams P_hits_d2                    = {"n_hits_d2", "Number of hits in D2 drift chamber", "Number of Hits", 0, 60 };
+PlotParams P_hits_d3p                   = {"n_hits_d3p", "Number of hits in D3+ drift chamber", "Number of Hits", 0, 60 };
+PlotParams P_hits_d3m                   = {"n_hits_d3m", "Number of hits in D3- drift chamber", "Number of Hits", 0, 60 };
 // dark photon hodoscope hits
 PlotParams P_hits_dp1                   = {"n_hits_dp1", "Number of hits in DP1	hodoscope", "Number of Hits", 0, 20 };		
 PlotParams P_hits_dp2                   = {"n_hits_dp2", "Number of hits in DP2 hodoscope", "Number of Hits", 0, 20 };	
+PlotParams P_hits_dp_total              = {"n_hits_dp1 + n_hits_dp2", "Number of total hits in DP hodoscope", "Number of Hits", 0, 30 };	
 // -------------------------------------------------------------------------------------
 
 // -------------------------------------------------------------------------------------
