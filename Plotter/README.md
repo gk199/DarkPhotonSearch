@@ -18,4 +18,5 @@ Plotter adapted from Kiley Kennedy's [plotter](https://github.com/gk199/Run3-HCA
 ```
 source /storage/utils/setup-e1039.sh 
 python3 DarkPhoton_Cutflow.py <filepath to .root file>
+python3 DarkPhoton_Cutflow.py ../../DarkQuest/e1039-analysis/SimHits/macro/output_background.root 
 ```

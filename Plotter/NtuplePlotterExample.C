@@ -25,7 +25,7 @@ void NtuplePlotterExample(){
 	plotter_example1.SetPlots({P_dimuon_mass_0}); // These "P_" variables are PlotParams structs defined in PlotParams.h
 	plotter_example1.SetOutputFileTag("Aprime_JPsi"); // Your own special name :)
 	plotter_example1.debug  		  = false; 	// Default = false
-	plotter_example1.plot_norm 		  = true; 	// Default = true
+	plotter_example1.plot_norm 		  = false; 	// Default = true
 	plotter_example1.plot_log  		  = true; 	// Default = true
 	plotter_example1.plot_log_ratio   = false; 	// Default = false. Make bottom panel log scale
 	plotter_example1.plot_log_x       = false; 	// Default = false. Plot log on the x axis
@@ -104,7 +104,9 @@ void NtuplePlotterExample(){
 								P_hits_dp1, P_hits_dp2, P_hits_dp_total, // dark photon hodoscope hits
 								P_track_nhits, P_track_nhits_1, P_n_tracks, P_track_charge, P_track_quality, P_track_chisq, // tracking info
 								P_dimuon_nmom_z_0, P_dimuon_pmom_z_0, P_dimuon_ppos_z_0, P_dimuon_npos_z_0, // dimuon muon momentum/position
-								P_dimuon_chisq, P_dimuon_chisq_vx, P_dimuon_x_vtx, P_dimuon_y_vtx, P_dimuon_z_vtx, // dimuon vertex info
+								P_dimuon_npos_z_1, P_dimuon_npos_z_2, P_dimuon_npos_z_3,
+								P_dimuon_chisq, P_dimuon_chisq_vx, P_dimuon_x_vtx, P_dimuon_y_vtx, P_dimuon_r_vtx, P_dimuon_z_vtx, // dimuon vertex info
+								P_dimuon_z_vtx_1, P_dimuon_z_vtx_2, P_dimuon_z_vtx_3,
 								P_hits_d0, P_hits_d1, P_hits_d2, P_hits_d3p, P_hits_d3m }); // drift chamber ? hits (total, not reconstructed)
 	plotter_example5.SetTreeName( "Events" ); 
 	plotter_example5.SetCuts(Cut_n_DiMuon);
@@ -162,6 +164,18 @@ void NtuplePlotterExample(){
 	plotter_example9.SetLegendPosition( 0.6, 0.7, 0.88, 0.88 );
 	plotter_example9.NBins = 30;
 	plotter_example9.Plot("ratio");	
+
+	// ----- How coorelated are number of drift chamber hits and dimuon chi^2? -----//
+	class NtuplePlotter plotter_example10( filetags_Aprime, path );
+	plotter_example10.SetTreeName( "Events" );	
+	plotter_example10.SetOutputFileTag("2D"); 	
+	// plotter_example10.SetComparisonCuts({Cut_LLPinCR_Jet0, Cut_LLPinHCAL_Jet0}, "MCsignalLLP");
+	plotter_example10.SetLegendPosition( 0.6, 0.7, 0.88, 0.88 );			
+	plotter_example10.SetCuts(Cut_n_DiMuon);
+	plotter_example10.SetPlots2D({Hist1_Hist2(P_hits_drift_tot, P_dimuon_chisq), 
+									Hist1_Hist2(P_hits_drift_tot, P_hits_hodoscope_total),
+									Hist1_Hist2(P_dimuon_z_vtx, P_dimuon_chisq)});
+	plotter_example10.PlotMany2D();
 
     // vars to consider plotting
     // P_dimuon_mass_0

@@ -27,18 +27,20 @@ def main():
     event_selection_list = [
         "All events", 
         "Dimuon candidate", 
-        "Dimuon pT $< 50$ GeV", 
         "Drift chamber hits $< 10$", 
         "Dimuon $\\chi^2 \\geq 15$",
+        "Dimuon pT $< 65$ GeV", 
+        "Dimuon pT $< 50$ GeV", 
         "Hodoscope hits $< 18$"
     ]
 	
     event_selection_list_abbrev = [
         "All       ", 
         "Dimuon cand",
-        "Dimuon pT", 
         "Drift chamber hits",
         "Dimuon chi2",
+        "Dimuon pT", 
+        "Dimuon pT lower", 
         "Hodoscope hits",
     ]
 
@@ -58,10 +60,11 @@ def main():
         Nevents = -1
 
         if i == 1: selection_string += "(n_dimuons > 0)"
-        if i == 2: selection_string += "&& (dimuon_pmom_z[0] < 50)"
-        if i == 3: selection_string += "&& ((n_hits_d0x + n_hits_d2x + n_hits_d3mx + n_hits_d3px) < 10)"
-        if i == 4: selection_string += "&& (dimuon_chisq[0] >= 15)"
-        if i == 5: selection_string += "&& ((n_hits_h1x + n_hits_h2x + n_hits_h3x + n_hits_h4x) < 18)"
+        if i == 2: selection_string += "&& ((n_hits_d0x + n_hits_d2x + n_hits_d3mx + n_hits_d3px) < 10)"
+        if i == 3: selection_string += "&& (dimuon_chisq[0] >= 15)"
+        if i == 4: selection_string += "&& (dimuon_pmom_z[0] < 65)"
+        if i == 5: selection_string += "&& (dimuon_pmom_z[0] < 50)"
+        if i == 6: selection_string += "&& ((n_hits_h1x + n_hits_h2x + n_hits_h3x + n_hits_h4x) < 18)"
 
         selval = tree.GetEntries(selection_string)
         if i == 1: init = selval
@@ -71,7 +74,7 @@ def main():
             if (i == 0): print(selname+" &", round(selval, 4), "&", "", " \\\\ ")
             if (i > 0): print(selname+" &", round(selval, 4), "&", round(selval/init, 4), " \\\\ ")
             if (i == 1): print("\\hline")
-            if (i == 5):
+            if (i == 6):
                 latex_end(file_path)
         else:
             print(selection_list_abbrev[i], "\t", Nevents, "\t", round(selval, 4), "\t", round(selval/init, 4))
